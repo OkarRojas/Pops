@@ -1,0 +1,48 @@
+... ==================================
+... REGLAS DEL JUEGO SNAKE
+... ==================================
+
+... Regla de movimiento básico
+dpop regla_movimiento_snake <
+    direccion_inicial : "derecha",
+    velocidad_inicial : 1,
+    incremento_velocidad : 0.2,
+    control : "teclado"
+>
+
+... Regla de crecimiento al comer
+dpop regla_comida <
+    evento : "comida",
+    accion : "crecer",
+    incremento_longitud : 1,
+    puntuacion_por_comida : 10
+>
+
+... Regla de aparición de comida especial
+dpop regla_comida_especial <
+    tipo : "bonus",
+    color : "rojo",
+    puntos_extra : 50,
+    tiempo_desaparicion : 10,
+    probabilidad_aparicion : 0.1
+>
+
+... Regla de colisión
+dpop regla_colisiones <
+    colision_borde : "fin_juego",
+    colision_cuerpo : "fin_juego",
+    colision_comida : "continuar"
+>
+
+... Regla de niveles y dificultad
+dpop regla_niveles_snake <
+    aumento_velocidad : "si",
+    puntos_por_nivel : 100,
+    multiplicador_velocidad : 1.1
+>
+
+... Regla de finalización del juego
+dpop regla_fin_juego <
+    condicion : "colision",
+    mensaje : "¡Game Over!"
+>
