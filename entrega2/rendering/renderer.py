@@ -1,6 +1,6 @@
+import pygame
 
-
-class windowsManager:
+class renderer:
     def __init__(self, width, height, x, y, color):
         self.width = width
         self.height = height
@@ -8,22 +8,20 @@ class windowsManager:
         self.y = y
         self.color = color
 
-    def gef_surface(self):
-        import pygame
+    def clear_surface(self):
         surface = pygame.Surface((self.width, self.height))
         surface.fill(self.color)
         return surface
     
-    def is_runing(self, event):
-        import pygame
-        if event.type == pygame.QUIT:
-            return False
-        return True
-    
-    def draw_window(self, screen):
-        surface = self.gef_surface()
+    def draw(self, screen):
+        surface = self.clear_surface()
         screen.blit(surface, (self.x, self.y))
 
-    def close_window(self):
-        import pygame
-        
+    def draw_text(self, screen, text, font, color, position):
+        text_surface = font.render(text, True, color)
+        screen.blit(text_surface, position)
+
+    def present(self):
+        pygame.display.flip()
+    def shutdown(self):
+        pygame.quit()
