@@ -67,10 +67,10 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 # Control
-KEY_UP = 'UP'
-KEY_DOWN = 'DOWN'
-KEY_LEFT = 'LEFT'
-KEY_RIGHT = 'RIGHT'
+KEY_UP = 'w'
+KEY_DOWN = 's'
+KEY_LEFT = 'a'
+KEY_RIGHT = 'd'
 KEY_ESCAPE = 'ESCAPE'
 MOVE_SPEED = 5
 ```
@@ -87,7 +87,7 @@ MOVE_SPEED = 5
 
 ```
 entrega2/
-├── config.py                       # Compartido
+├── cgonfi.py                       # Compartido
 ├── core/
 │   ├── __init__.py
 │   ├── window_manager.py          # Persona 1
@@ -194,8 +194,8 @@ git commit -m "arreglo el bug"
 - **Persona 2**: Engine y Clock básicos
 - **Persona 3**: InputHandler básico
 
-**parte 2**
-- **Persona 2**: Crear DNMLoader
+**parte 2
+- **Persona 2**: Crear DNMLoader**
 - **Persona 1**: Expandir Renderer (más métodos)
 - **Persona 3**: Demo de movimiento
 
@@ -279,7 +279,7 @@ git commit -m "arreglo el bug"
 | Cambiar interfaces sin avisar | El código de otros se rompe |
 | Trabajar en main directamente | El código estable se daña |
 
----
+---che
 
 ## ✅ DOCUMENTO FINAL
 
