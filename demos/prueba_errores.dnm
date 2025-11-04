@@ -1,0 +1,17 @@
+... Archivo de prueba con errores de sintaxis
+... para verificar el reporte de números de línea
+
+dpop variable_normal <
+    clave: "valor",
+    numero: 123
+>
+
+... Error en la línea siguiente: falta el identificador después de dpop
+dpop <
+    error: "aquí"
+>
+
+... Error en línea siguiente: token inesperado
+token_inesperado: @#$%
+
+... Final del archivo

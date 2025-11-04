@@ -1,0 +1,17 @@
+WINDOW_WIDTH = 640
+WINDOW_HEIGHT = 480
+WINDOW_TITLE = "Pops Game Engine"
+FPS = 60
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED   = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE  = (0, 0, 255)
+
+KEY_UP = 'w'
+KEY_DOWN = 's'
+KEY_LEFT = 'a'
+KEY_RIGHT = 'd'
+KEY_ESCAPE = 'ESCAPE'
+MOVE_SPEED = 5
