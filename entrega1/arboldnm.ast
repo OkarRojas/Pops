@@ -1,0 +1,35 @@
+{
+    "regla_movimiento_snake": {
+        "direccion_inicial": "derecha",
+        "velocidad_inicial": 1,
+        "incremento_velocidad": 0.2,
+        "control": "teclado"
+    },
+    "regla_comida": {
+        "evento": "comida",
+        "accion": "crecer",
+        "incremento_longitud": 1,
+        "puntuacion_por_comida": 10
+    },
+    "regla_comida_especial": {
+        "tipo": "bonus",
+        "color": "rojo",
+        "puntos_extra": 50,
+        "tiempo_desaparicion": 10,
+        "probabilidad_aparicion": 0.1
+    },
+    "regla_colisiones": {
+        "colision_borde": "fin_juego",
+        "colision_cuerpo": "fin_juego",
+        "colision_comida": "continuar"
+    },
+    "regla_niveles_snake": {
+        "aumento_velocidad": "si",
+        "puntos_por_nivel": 100,
+        "multiplicador_velocidad": 1.1
+    },
+    "regla_fin_juego": {
+        "condicion": "colision",
+        "mensaje": "\u00a1Game Over!"
+    }
+}

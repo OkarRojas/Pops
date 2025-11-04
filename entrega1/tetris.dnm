@@ -1,0 +1,122 @@
+... ==================================
+... REGLAS DEL JUEGO
+... ==================================
+
+... Regla para el comportamiento al completar una linea
+dpop regla_puntuacion_lineas  <
+    evento : "linea_completada",
+    accion : "eliminar_fila",
+    puntuacion_1_linea : 100,
+    puntuacion_2_lineas : 300,
+    puntuacion_3_lineas : 500,
+    puntuacion_4_lineas : 800
+>
+
+... Regla para la ficha explosiva
+dpop regla_bomba_ladrillo  <
+    tipo_pieza : "bomba",
+    color : "rojo_especial",
+    radio_destruccion : 2,
+    tiempo_explosion : 5
+>
+
+... Regla para la aparicion aleatoria de piezas
+dpop regla_aparicion_piezas  <
+    aparicion_aleatoria : "si",
+    probabilidad_bomba : 0.05
+>
+
+... Regla para el aumento de velocidad con los niveles
+dpop regla_niveles_velocidad  <
+    aumento_velocidad : "si",
+    puntos_por_nivel : "1000s",
+    multiplicador_velocidad : 1.2
+>
+
+... Regla de finalizacion del juego
+... El juego termina cuando una pieza no puede ser colocada debido a que el tope del tablero está ocupado.
+dpop regla_fin_juego  <
+    condicion : "pieza_alcanza_tope"
+>
+
+... Regla para rotacion de piezas
+dpop regla_rotacion_piezas  <
+    rotacion_habilitada : "si",
+    grados_rotacion : 90,
+    tecla_rotacion : "flecha_arriba",
+    rotaciones_maximas : 4
+>
+
+... Regla para preview de siguiente pieza
+dpop regla_preview_pieza  <
+    mostrar_siguiente : "si",
+    posicion_preview : "derecha_superior",
+    mostrar_cola : 3
+>  
+
+
+... ==================================
+... DEFINICION DE LAS PIEZAS
+... ==================================
+
+figura_L¿
+    SPOP piezaNombre  = "L",
+    SPOP color = "amarillo",
+    POPS forma ¿
+       ¿0, 0, 1?,
+       ¿1, 1, 1?
+    ?
+?
+
+figura_T¿
+    SPOP piezaNombre = "T",
+    SPOP color = "morado",
+    POPS forma ¿
+        ¿0, 1, 0?,
+        ¿1, 1, 1?
+    ?
+?
+
+figura_I¿
+    SPOP piezaNombre = "I",
+    SPOP color = "cian",
+    POPS forma ¿
+        ¿1, 1, 1, 1?
+    ?
+?
+
+figura_o¿
+    SPOP piezaNombre = "O",
+    SPOP color = "azul",
+    POPS forma ¿
+        ¿1, 1?,
+        ¿1, 1?
+    ?
+?
+
+figura_s¿
+    SPOP piezaNombre = "S",
+    SPOP color = "verde",
+    POPS forma ¿
+        ¿0, 1, 1?,
+        ¿1, 1, 0?
+    ?
+?
+
+figura_z¿
+    SPOP piezaNombre = "Z",
+    SPOP color = "rojo",
+    POPS forma ¿
+        ¿1, 1, 0?,
+        ¿0, 1, 1?
+    ?
+?
+
+figura_j¿
+    SPOP piezaNombre = "J",
+    SPOP color = "naranja",
+    POPS forma ¿
+        ¿1, 0, 0?,
+        ¿1, 1, 1?
+    ?
+?
