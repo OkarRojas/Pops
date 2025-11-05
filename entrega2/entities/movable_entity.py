@@ -1,9 +1,8 @@
-# entities/movable_entity.py
 import pygame
 from confing import MOVE_SPEED, WINDOW_WIDTH, WINDOW_HEIGHT
 
 class MovableEntity:
-    def __init__(self, x: int, y: int, color=(255, 100, 100)):
+    def __init__(self, x, y, color=(255, 100, 100)):
         self.rect = pygame.Rect(x, y, 50, 30)
         self.color = color
 

@@ -4,7 +4,7 @@ import pygame
 class Renderer:
 	"""Renderer sencillo que dibuja sobre una superficie pygame."""
 
-	def __init__(self, surface: pygame.Surface):
+	def __init__(self, surface):
 		self.surface = surface
 		self._font_cache = {}
 

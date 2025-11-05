@@ -13,7 +13,7 @@ class InputHandler:
             if event.type == pygame.QUIT:
                 self.keys = {}  # fuerza cierre
 
-    def is_key_pressed(self, key_name: str) -> bool:
+    def is_key_pressed(self, key_name):
         mapping = {
             KEY_UP:    pygame.K_UP,
             KEY_DOWN:  pygame.K_DOWN,
