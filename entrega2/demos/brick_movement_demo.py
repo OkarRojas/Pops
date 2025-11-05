@@ -23,7 +23,7 @@ def main():
     input_handler = InputHandler()
     brick = MovableEntity(295, 225, RED)
 
-    clock = pygame.Clock()
+    clock = pygame.time.Clock()
     while window.is_running():
         input_handler.update()
         if input_handler.is_key_pressed('ESCAPE'):
