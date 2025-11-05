@@ -1,6 +1,17 @@
+"""Pequeña prueba de integración: crea una ventana, procesa input y dibuja
+una entidad móvil usando los componentes del proyecto.
+
+Este archivo se usa para comprobar que `windows_manager`, `Renderer`,
+`InputHandler` y `MovableEntity` funcionan juntos.
+"""
+
 from confing import *
 from entrega2.rendering.windows_manager import windows_manager
 from entrega2.rendering.renderer import Renderer
+from entrega2.input.input_handler import InputHandler
+from entrega2.entities.movable_entity import MovableEntity
+import pygame
+
 
 # PASO 1: Crear ventana
 print("1. Creando ventana...")
@@ -20,19 +31,34 @@ renderer = Renderer(surface)
 
 # PASO 4: Game Loop Simple
 print("4. Iniciando game loop...")
-frame_count = 0
-max_frames = 300  # Ejecutar 300 frames (5 segundos a 60 FPS)
 
-while window.is_running() and frame_count < max_frames:
-    frame_count += 1
-    
-    # Dibujar
-    renderer.clear(BLACK)                                   # Limpiar
-    renderer.draw_rect(100, 100, 40, 40, RED)              # Rectángulo rojo
-    renderer.draw_rect(300, 200, 50, 50, BLUE)             # Rectángulo azul
-    renderer.draw_text("Test de Pygame", 10, 10, 20, WHITE)  # Texto
-    renderer.draw_text(f"Frame: {frame_count}", 10, 40, 20, GREEN)
-    renderer.present()                                      # Mostrar
+input_handler = InputHandler()
+brick = MovableEntity(295, 225, RED)
+clock = pygame.time.Clock()
+
+print(type(brick))
+
+while window.is_running():
+    # InputHandler es el único que consume eventos: le pasamos la ventana
+    input_handler.update(window)
+    # Si al procesar eventos se solicitó cierre, salir del bucle antes de dibujar
+    if not window.is_running():
+        break
+    if input_handler.is_key_pressed(KEY_ESCAPE):
+        window.close()
+        break
+
+    # Actualizar entidad
+    brick.update(input_handler)
+
+    # Dibujar: limpiamos y pedimos a la entidad que se dibuje vía renderer
+    renderer.clear(BLACK)
+    brick.draw(renderer)
+    # Texto de información
+    renderer.draw_text("Test de Pygame", 10, 10, 20, WHITE)
+    renderer.draw_text("Frame: holas", 10, 40, 20, GREEN)
+    renderer.present()
+    clock.tick(FPS)
 
 # PASO 5: Cerrar
 print("5. Cerrando...")

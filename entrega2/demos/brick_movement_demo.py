@@ -10,14 +10,14 @@ if ENTREGA2_DIR not in sys.path:
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from confing import WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, FPS, WHITE, RED
-from core.windows_manager import WindowManager
+from confing import BLUE, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE, FPS, WHITE, RED
+from rendering.windows_manager import windows_manager
 from rendering.renderer import Renderer
 from input.input_handler import InputHandler
 from entities.movable_entity import MovableEntity
 
 def main():
-    window = WindowManager(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
+    window = windows_manager(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
     renderer = Renderer(window.get_surface())
 
     input_handler = InputHandler()
@@ -31,11 +31,11 @@ def main():
 
         brick.update(input_handler)
 
-        renderer.clear(WHITE)
+        renderer.clear(BLUE)
         brick.draw(renderer)
         renderer.draw_text(
             "Flechas = mover  |  ESC = salir",
-            10, 10, 20, (0, 0, 0)
+            10, 10, 20, (255, 255, 255)
         )
         renderer.present()
 
