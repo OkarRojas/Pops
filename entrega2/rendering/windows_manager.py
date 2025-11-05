@@ -16,11 +16,14 @@ class windows_manager:
     def get_surface(self):
          return self.screen 
     
-    def is_running(self, event):
-        if event.type == pygame.QUIT:
-            return self.running == False
-        return True
+    def is_running(self):
+        # Procesar eventos de pygame
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+        return self.running
 
-    def close_window(self):
+    def close(self):
+        self.running = False
         pygame.quit()
         

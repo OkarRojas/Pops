@@ -2,25 +2,25 @@ import pygame
 
 class renderer:
     def __init__(self, surface):
-        pygame.init()
+        self.surface = surface
         self.width = surface.get_width()
         self.height = surface.get_height()
-        self.x = 0
-        self.y = 0
-        self.color = (0, 0, 0)  # Default background color
-        self.font = pygame.font.SysFont(None, 24)
+        self.default_font = pygame.font.SysFont(None, 24)
 
-    def clear_surface(self):
-        self.surface.fill(self.color)
+    def clear(self, color=(0, 0, 0)):
+        """Limpia la superficie con el color especificado"""
+        self.surface.fill(color)
 
-    def draw(self, x, y, width, height, color):
-        self.clear_surface()
+    def draw_rect(self, x, y, width, height, color):
+        """Dibuja un rectángulo en la superficie"""
         pygame.draw.rect(self.surface, color, (x, y, width, height))
-        self.screen.blit(self.surface, (self.x, self.y))
 
-    def draw_text(self, text, font, color, position):
+    def draw_text(self, text, x, y, size=24, color=(255, 255, 255)):
+        """Dibuja texto en la superficie"""
+        font = pygame.font.SysFont(None, size)
         text_surface = font.render(text, True, color)
-        self.screen.blit(text_surface, position)
+        self.surface.blit(text_surface, (x, y))
 
     def present(self):
+        """Actualiza la pantalla con todo lo dibujado"""
         pygame.display.flip()

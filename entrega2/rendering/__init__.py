@@ -1,1 +1,2 @@
-__init__
+# Paquete rendering para entrega2
+
