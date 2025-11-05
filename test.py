@@ -24,7 +24,7 @@ print("4. Iniciando game loop...")
 frame_count = 0
 max_frames = 300  # Ejecutar 300 frames (5 segundos a 60 FPS)
 
-while window.is_running() and frame_count < max_frames:
+while window.is_running():
     frame_count += 1
     
     # Dibujar
@@ -37,5 +37,4 @@ while window.is_running() and frame_count < max_frames:
 
 # PASO 5: Cerrar
 print("5. Cerrando...")
-window.close()
 print("✓ Test completado!")
