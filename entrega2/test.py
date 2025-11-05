@@ -6,10 +6,10 @@ Este archivo se usa para comprobar que `windows_manager`, `Renderer`,
 """
 
 from confing import *
-from entrega2.rendering.windows_manager import windows_manager
-from entrega2.rendering.renderer import Renderer
-from entrega2.input.input_handler import InputHandler
-from entrega2.entities.movable_entity import MovableEntity
+from rendering.windows_manager import windows_manager
+from rendering.renderer import Renderer
+from input.input_handler import InputHandler
+from entities.movable_entity import MovableEntity
 import pygame
 
 
@@ -62,4 +62,4 @@ while window.is_running():
 
 # PASO 5: Cerrar
 print("5. Cerrando...")
-print("✓ Test completado!")
+print("Test completado!")

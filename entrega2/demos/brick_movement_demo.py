@@ -25,7 +25,8 @@ def main():
 
     clock = pygame.time.Clock()
     while window.is_running():
-        input_handler.update()
+        # InputHandler es el único que consume eventos; le pasamos la ventana
+        input_handler.update(window)
         if input_handler.is_key_pressed('ESCAPE'):
             window.close()
 

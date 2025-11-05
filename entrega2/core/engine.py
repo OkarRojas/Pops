@@ -26,7 +26,8 @@ class GameEngine(object):
         self.window.close()
 
     def process_events(self):
-        self.input.update()
+        # Delegar a InputHandler el consumo de eventos; pasar la ventana
+        self.input.update(self.window)
         if self.input.is_key_pressed(KEY_ESCAPE):
             self.running = False
 
