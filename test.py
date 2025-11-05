@@ -1,7 +1,6 @@
-import pygame
 from confing import *
 from entrega2.rendering.windows_manager import windows_manager
-from entrega2.rendering.renderer import renderer
+from entrega2.rendering.renderer import Renderer
 
 # PASO 1: Crear ventana
 print("1. Creando ventana...")
@@ -17,7 +16,7 @@ print(f"✓ Surface obtenido: {surface}")
 
 # PASO 3: Crear Renderer
 print("3. Creando Renderer...")
-renderer = renderer(surface)
+renderer = Renderer(surface)
 
 # PASO 4: Game Loop Simple
 print("4. Iniciando game loop...")
@@ -37,5 +36,4 @@ while window.is_running() and frame_count < max_frames:
 
 # PASO 5: Cerrar
 print("5. Cerrando...")
-window.close()
 print("✓ Test completado!")

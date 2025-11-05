@@ -1,2 +1,3 @@
-# Paquete rendering para entrega2
+"""Paquete rendering: exporta el módulo Renderer."""
 
+from .renderer import Renderer
