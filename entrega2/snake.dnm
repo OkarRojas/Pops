@@ -1,48 +1,31 @@
-... ==================================
-... REGLAS DEL JUEGO SNAKE
-... ==================================
+... Demo: static block + movable entity
 
-... Regla de movimiento básico
-dpop regla_movimiento_snake <
-    direccion_inicial : "derecha",
-    velocidad_inicial : 1,
-    incremento_velocidad : 0.2,
-    control : "teclado"
+... Static brick
+
+dpop bloque_estatico <
+    x : 150,
+    y : 50,
+    w : 120,
+    h : 40,
+    color : "#0088ff"
 >
 
-... Regla de crecimiento al comer
-dpop regla_comida <
-    evento : "comida",
-    accion : "crecer",
-    incremento_longitud : 1,
-    puntuacion_por_comida : 10
+... Movable entity (uses MovableEntity class)
+
+dpop bloque_movil <
+    type : "entity",
+    class : "MovableEntity",
+    x : 300,
+    y : 200,
+    color : "verde"
 >
 
-... Regla de aparición de comida especial
-dpop regla_comida_especial <
-    tipo : "bonus",
-    color : "rojo",
-    puntos_extra : 50,
-    tiempo_desaparicion : 10,
-    probabilidad_aparicion : 0.1
->
+... Controls: WASD to move the MovableEntity, ESC to quit.
 
-... Regla de colisión
-dpop regla_colisiones <
-    colision_borde : "fin_juego",
-    colision_cuerpo : "fin_juego",
-    colision_comida : "continuar"
->
+dpop regla_puntuacio  <
+    evento : "linea_completada",
+    accion : "eliminar_fila",
+    puntuacion_1_linea : 100,
+    display_only : "puntuacion_1_linea",
 
-... Regla de niveles y dificultad
-dpop regla_niveles_snake <
-    aumento_velocidad : "si",
-    puntos_por_nivel : 100,
-    multiplicador_velocidad : 1.1
->
-
-... Regla de finalización del juego
-dpop regla_fin_juego <
-    condicion : "colision",
-    mensaje : "¡Game Over!"
 >

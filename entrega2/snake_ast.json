@@ -1,0 +1,22 @@
+{
+  "bloque_estatico": {
+    "x": 150,
+    "y": 50,
+    "w": 120,
+    "h": 40,
+    "color": "#0088ff"
+  },
+  "bloque_movil": {
+    "type": "entity",
+    "class": "MovableEntity",
+    "x": 300,
+    "y": 200,
+    "color": "verde"
+  },
+  "regla_puntuacio": {
+    "evento": "linea_completada",
+    "accion": "eliminar_fila",
+    "puntuacion_1_linea": 100,
+    "display_only": "puntuacion_1_linea"
+  }
+}

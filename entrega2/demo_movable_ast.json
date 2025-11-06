@@ -1,0 +1,16 @@
+{
+  "bloque_estatico": {
+    "x": 50,
+    "y": 50,
+    "w": 120,
+    "h": 40,
+    "color": "#0088ff"
+  },
+  "bloque_movil": {
+    "type": "entity",
+    "class": "MovableEntity",
+    "x": 300,
+    "y": 200,
+    "color": "verde"
+  }
+}

@@ -19,6 +19,10 @@ class GameEngine(object):
         while self.window.is_running() and self.running:
             dt = self.clock.tick()
             self.process_events()
+            # If the window was closed during event processing, stop before
+            # attempting update/render to avoid drawing on a quit Surface.
+            if not self.window.is_running() or not self.running:
+                break
             self.update(dt)
             self.render()
         if callable(self.on_shutdown):
