@@ -36,7 +36,6 @@ input_handler = InputHandler()
 brick = MovableEntity(295, 225, RED)
 clock = pygame.time.Clock()
 
-print(type(brick))
 
 while window.is_running():
     # InputHandler es el único que consume eventos: le pasamos la ventana
