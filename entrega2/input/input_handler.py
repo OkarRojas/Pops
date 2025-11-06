@@ -1,7 +1,14 @@
 import pygame
-from confing import (
-    KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESCAPE
-)
+try:
+    # Prefer the canonical config module name
+    from entrega2.config import (
+        KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESCAPE
+    )
+except Exception:
+    # Fallback to the historical module name used across the repo
+    from entrega2.confing import (
+        KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_ESCAPE
+    )
 
 
 class InputHandler:

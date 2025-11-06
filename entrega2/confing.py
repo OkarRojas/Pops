@@ -1,28 +1,14 @@
-"""Constantes de configuración del proyecto.
+"""Compatibility wrapper: expose the canonical `config.py` names under
+the historical module name `confing` (many files import `entrega2.confing`).
 
-No cambiar el nombre del archivo (`confing.py`) porque muchos módulos
-import usando ese nombre. Contiene valores sencillos para ventanas,
-colores y teclas lógicas.
+Keep this file minimal so future edits stay in `config.py` only.
 """
 
-WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE = 800, 600, "Pygame Window Test"
+from .config import *
 
-# Game / rendering
-FPS = 60
-
-# Movement
-MOVE_SPEED = 5
-
-# Key names used by InputHandler (lógicos, mapeados a teclas físicas)
-KEY_UP = 'UP'
-KEY_DOWN = 'DOWN'
-KEY_LEFT = 'LEFT'
-KEY_RIGHT = 'RIGHT'
-KEY_ESCAPE = 'ESCAPE'
-
-# Colors (RGB)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
+__all__ = [
+	'WINDOW_WIDTH', 'WINDOW_HEIGHT', 'WINDOW_TITLE',
+	'FPS', 'MOVE_SPEED',
+	'KEY_UP', 'KEY_DOWN', 'KEY_LEFT', 'KEY_RIGHT', 'KEY_ESCAPE',
+	'BLACK', 'WHITE', 'RED', 'GREEN', 'BLUE'
+]

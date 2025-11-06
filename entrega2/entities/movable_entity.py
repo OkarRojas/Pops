@@ -1,7 +1,9 @@
 import pygame
-# Use the shared `confing.py` (intentionally named) so key names and
-# movement constants are the same the InputHandler expects.
-from entrega2.confing import MOVE_SPEED, WINDOW_WIDTH, WINDOW_HEIGHT, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT
+# Prefer the canonical config module; fall back to the historical confing name
+try:
+    from entrega2.config import MOVE_SPEED, WINDOW_WIDTH, WINDOW_HEIGHT, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT
+except Exception:
+    from entrega2.confing import MOVE_SPEED, WINDOW_WIDTH, WINDOW_HEIGHT, KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT
 
 
 class MovableEntity:
