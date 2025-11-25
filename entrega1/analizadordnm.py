@@ -428,28 +428,43 @@ def save_ast_to_file(ast, file_path):
     except Exception as e:   
         print(f"Error al guardar el AST: {e}")
 
-file_path = 'snake.dnm'
-ast_file_path = 'arboldnm.ast'
+# --- Bloque de prueba antiguo (dejado como comentario) ---
 
-source_code = load_source_file(file_path)
+# file_path = 'snake.dnm'
+# ast_file_path = 'arboldnm.ast'
+#
+# source_code = load_source_file(file_path)
+#
+# if source_code:
+#     print("Lexer")
+#     tokenizer = Tokenizer(source_code)
+#     tokens = tokenizer.tokenize()
+#     print("Tokens reconocidos:")
+#     for token in tokens:
+#         print(token)
+#
+#     print("\n Parser")
+#     parser = Parser(tokens)
+#     try:
+#         ast_and_symbol_table = parser.parse()
+#         print("Sintaxis correcta. Se ha construido el Arbol de Sintaxis Abstracta (AST) / Tabla de Simbolos.")
+#         print("Contenido del AST:")
+#         print(json.dumps(ast_and_symbol_table, indent=4))
+#
+#         save_ast_to_file(ast_and_symbol_table, ast_file_path)
+#
+#     except (SyntaxError, NameError) as e:
+#         print(f"Error en la sintaxis: {e}")
 
-if source_code:
-    print("Lexer")
+
+def parse_dnm_file(file_path: str) -> dict:
+    """
+    Parsea un archivo .dnm y retorna la tabla de símbolos (AST) como dict.
+    Esta función es la que usarán el motor y tu GameLogic.
+    """
+    source_code = load_source_file(file_path)
     tokenizer = Tokenizer(source_code)
     tokens = tokenizer.tokenize()
-    print("Tokens reconocidos:")
-    for token in tokens:
-        print(token)
-
-    print("\n Parser")
     parser = Parser(tokens)
-    try:
-        ast_and_symbol_table = parser.parse()
-        print("Sintaxis correcta. Se ha construido el Arbol de Sintaxis Abstracta (AST) / Tabla de Simbolos.")
-        print("Contenido del AST:")
-        print(json.dumps(ast_and_symbol_table, indent=4))
-        
-        save_ast_to_file(ast_and_symbol_table, ast_file_path)
-        
-    except (SyntaxError, NameError) as e:
-        print(f"Error en la sintaxis: {e}")
+    symbol_table = parser.parse()
+    return symbol_table
