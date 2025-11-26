@@ -1,5 +1,3 @@
-# entrega3/logic/snake_rules.py
-
 import random
 
 class SnakeRules:
@@ -8,22 +6,14 @@ class SnakeRules:
     """
 
     def __init__(self, config_dict: dict):
-        """
-        config_dict viene del .dnm, algo como:
 
-        dpop snake <
-            width : 20,
-            height : 20,
-            initial_length : 3,
-            speed : 5
-        >
-        """
         self.cfg = config_dict or {}
 
-        self.width = int(self.cfg.get("width", 20))
-        self.height = int(self.cfg.get("height", 20))
-        self.initial_length = int(self.cfg.get("initial_length", 3))
-        self.speed = float(self.cfg.get("speed", 5.0))
+        self.width = int(self.cfg.get("ancho", 20))
+        self.height = int(self.cfg.get("alto", 20))
+        self.initial_length = int(self.cfg.get("largo_inicial", 3))
+        self.speed = float(self.cfg.get("velocidad", 5.0))
+        self.score_per_food = int(self.cfg.get("puntos_por_manzana", 10))
 
     def initial_state(self):
         cx = self.width // 2
@@ -32,7 +22,7 @@ class SnakeRules:
 
         return {
             "snake": snake,
-            "direction": (1, 0),
+            "direction": (1, 0),  # derecha
             "food": self._spawn_food(snake),
             "score": 0,
             "is_game_over": False,
@@ -74,9 +64,11 @@ class SnakeRules:
             self._advance_snake(state)
 
     def check_collisions(self, state):
+        # Las colisiones se comprueban dentro de _advance_snake
         pass
 
     def apply_rules(self, state):
+        # No hay reglas extra aparte de comer / morir
         pass
 
     def get_game_state(self, state):
@@ -92,6 +84,8 @@ class SnakeRules:
     def is_game_over(self, state):
         return state["is_game_over"]
 
+    # ----------------- Lógica interna -----------------
+
     def _advance_snake(self, state):
         snake = state["snake"]
         dx, dy = state["direction"]
@@ -99,30 +93,20 @@ class SnakeRules:
         new_head = (head_x + dx, head_y + dy)
 
         x, y = new_head
+        # Colisión con paredes
         if x < 0 or x >= self.width or y < 0 or y >= self.height:
             state["is_game_over"] = True
             return
 
+        # Colisión consigo misma
         if new_head in snake:
             state["is_game_over"] = True
             return
 
+        # Añadir nueva cabeza
         snake.insert(0, new_head)
 
+        # ¿Comió la comida?
         if new_head == state["food"]:
-            state["score"] += 1
-            state["food"] = self._spawn_food(snake)
-        else:
-            snake.pop()
-
-    def _spawn_food(self, snake):
-        free_cells = [
-            (x, y)
-            for x in range(self.width)
-            for y in range(self.height)
-            if (x, y) not in snake
-        ]
-        if not free_cells:
-            return (-1, -1)
-        return random.choice(free_cells)
-
+            state["score"] += self.score_per_food
+            state["food"] = self._spawn_
