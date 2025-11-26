@@ -1,9 +1,6 @@
 import random
 
 class SnakeRules:
-    """
-    Lógica específica de Snake.
-    """
 
     def __init__(self, config_dict: dict):
 
