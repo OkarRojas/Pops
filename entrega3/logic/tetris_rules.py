@@ -34,10 +34,10 @@ class TetrisRules:
         """
         self.cfg = config_dict or {}
 
-        self.width = int(self.cfg.get("width", 10))
-        self.height = int(self.cfg.get("height", 20))
-        self.gravity = float(self.cfg.get("gravity", 1.0))
-        self.score_per_line = int(self.cfg.get("score_per_line", 100))
+        self.width = int(self.cfg.get("ancho", 10))
+        self.height = int(self.cfg.get("alto", 20))
+        self.gravity = float(self.cfg.get("gravedad", 1.0))
+        self.score_per_line = int(self.cfg.get("puntos_por_linea", 100))
 
         pieces_from_cfg = self.cfg.get("pieces")
         if isinstance(pieces_from_cfg, list):
