@@ -1,12 +1,6 @@
-# entrega3/logic/tetris_rules.py
-
 import random
 
 class TetrisRules:
-    """
-    Lógica específica de Tetris.
-    Lee parámetros desde un diccionario que viene del .dnm.
-    """
 
     TETROMINOS = {
         "I": [(0, 0), (1, 0), (2, 0), (3, 0)],
@@ -19,19 +13,7 @@ class TetrisRules:
     }
 
     def __init__(self, config_dict: dict):
-        """
-        config_dict viene del .dnm, algo como:
 
-        dpop tetris <
-            width : 10,
-            height : 20,
-            gravity : 1,
-            score_per_line : 100
-        >
-
-        Cambia 'width', 'height', etc. si en tu tetris.dnm
-        los nombres son distintos.
-        """
         self.cfg = config_dict or {}
 
         self.width = int(self.cfg.get("ancho", 10))
